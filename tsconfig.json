@@ -1,0 +1,15 @@
+{
+  "include": ["*.js"],
+  "exclude": ["*.d.ts"],
+  "compilerOptions": {
+    "checkJs": true,
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "module": "node16",
+    "noImplicitAny": true,
+    "strict": true,
+    "target": "es2022",
+    "lib": ["es2022"]
+  }
+}

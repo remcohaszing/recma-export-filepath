@@ -1,0 +1,8 @@
+root: true
+extends:
+  - remcohaszing
+rules:
+  no-invalid-this: off
+  no-proto: off
+  import/no-extraneous-dependencies: off
+  jsdoc/check-indentation: off

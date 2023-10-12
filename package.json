@@ -1,0 +1,46 @@
+{
+  "name": "recma-export-filepath",
+  "version": "0.0.0",
+  "description": "A recma plugin to expose the filepath as a named export",
+  "keywords": [
+    "estree",
+    "mdx",
+    "recma",
+    "unified"
+  ],
+  "homepage": "https://github.com/remcohaszing/recma-export-filepath#readme",
+  "bugs": "https://github.com/remcohaszing/recma-export-filepath/issues",
+  "repository": "remcohaszing/recma-export-filepath",
+  "funding": "https://github.com/sponsors/remcohaszing",
+  "license": "MIT",
+  "author": "Remco Haszing <remcohaszing@gmail.com>",
+  "sideEffects": false,
+  "type": "module",
+  "exports": "./index.js",
+  "files": [
+    "index.*"
+  ],
+  "scripts": {
+    "prepack": "tsc --build",
+    "test": "c8 node --test"
+  },
+  "dependencies": {
+    "@types/estree": "^1.0.0",
+    "estree-util-is-identifier-name": "^3.0.0",
+    "normalize-path": "^3.0.0",
+    "unified": "^11.0.0"
+  },
+  "devDependencies": {
+    "@types/normalize-path": "^3.0.0",
+    "acorn": "^8.0.0",
+    "astring": "^1.0.0",
+    "c8": "^8.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-remcohaszing": "^10.0.0",
+    "prettier": "^3.0.0",
+    "remark-cli": "^11.0.0",
+    "remark-preset-remcohaszing": "^2.0.0",
+    "source-map": "^0.7.0",
+    "typescript": "^5.0.0"
+  }
+}
