@@ -67,6 +67,36 @@ test('absolute path', () => {
   assert.equal(String(result), 'export const filepath = "/home/user/example.js";\n')
 })
 
+test('cwd (absolute)', () => {
+  const result = recma().use(recmaExportFilepath, { cwd: '/home/user/docs/' }).processSync({
+    cwd: '/home/user',
+    path: '/home/user/docs/example.md',
+    value: ''
+  })
+
+  assert.equal(String(result), 'export const filepath = "example.md";\n')
+})
+
+test('cwd (relative)', () => {
+  const result = recma().use(recmaExportFilepath, { cwd: 'docs' }).processSync({
+    cwd: '/home/user',
+    path: '/home/user/docs/example.md',
+    value: ''
+  })
+
+  assert.equal(String(result), 'export const filepath = "example.md";\n')
+})
+
+test('cwd (relative with parent dir)', () => {
+  const result = recma().use(recmaExportFilepath, { cwd: '..' }).processSync({
+    cwd: '/home/user',
+    path: '/home/user/docs/example.md',
+    value: ''
+  })
+
+  assert.equal(String(result), 'export const filepath = "user/docs/example.md";\n')
+})
+
 test('insert as first statement', () => {
   const result = recma().use(recmaExportFilepath).processSync({
     cwd: '/home/user',

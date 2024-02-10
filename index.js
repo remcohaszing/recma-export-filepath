@@ -1,4 +1,4 @@
-import { relative } from 'node:path'
+import { relative, resolve } from 'node:path'
 
 import { name as isIdentifierName } from 'estree-util-is-identifier-name'
 import normalizePath from 'normalize-path'
@@ -7,6 +7,8 @@ import normalizePath from 'normalize-path'
  * @typedef RecmaExportFilepathOptions
  * @property {boolean} [absolute=false]
  *   If true, use an absolute path. By default a relative path is used.
+ * @property {string} [cwd]
+ *   The current working directory to use when generating a relative file path.
  * @property {string} [name='filepath']
  *   The name to export the file path as.
  */
@@ -16,7 +18,8 @@ import normalizePath from 'normalize-path'
  *
  * @type {import('unified').Plugin<[RecmaExportFilepathOptions?], import('estree').Program>}
  */
-export default function recmaExportFilepath({ absolute = false, name = 'filepath' } = {}) {
+export default function recmaExportFilepath(options = {}) {
+  const { absolute = false, cwd, name = 'filepath' } = options
   if (!isIdentifierName(name)) {
     throw new Error(`Name this should be a valid identifier, got: ${JSON.stringify(name)}`)
   }
@@ -25,11 +28,9 @@ export default function recmaExportFilepath({ absolute = false, name = 'filepath
     let value = file.path
 
     if (value) {
-      const cwd = normalizePath(file.cwd)
       value = normalizePath(value)
-
       if (!absolute) {
-        value = relative(cwd, value)
+        value = relative(cwd ? resolve(file.cwd, cwd) : normalizePath(file.cwd), value)
       }
     } else {
       const message = file.message('Missing file.path', {
