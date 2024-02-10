@@ -63,9 +63,10 @@ The default export is a recma plugin.
 
 ### Options
 
-- `name` (`string`, default: `'filepath'`) — The name to export the file path as.
 - `absolute` (`boolean`, default: `false`) — If true, use an absolute path. By default a relative
   path is used.
+- `cwd` (`string`) The current working directory to use when generating a relative file path.
+- `name` (`string`, default: `'filepath'`) — The name to export the file path as.
 
 ## Compatibility
 
