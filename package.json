@@ -16,9 +16,15 @@
   "author": "Remco Haszing <remcohaszing@gmail.com>",
   "sideEffects": false,
   "type": "module",
-  "exports": "./index.js",
+  "exports": {
+    "types": "./types/recma-export-filepath.d.ts",
+    "default": "./lib/recma-export-filepath.js"
+  },
+  "main": "./lib/recma-export-filepath.js",
+  "types": "./types/recma-export-filepath.d.ts",
   "files": [
-    "index.*"
+    "lib",
+    "types"
   ],
   "scripts": {
     "prepack": "tsc --build",

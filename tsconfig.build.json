@@ -1,0 +1,15 @@
+{
+  "include": ["lib"],
+  "compilerOptions": {
+    "composite": true,
+    "checkJs": true,
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "module": "nodenext",
+    "outDir": "types",
+    "rootDir": "lib",
+    "strict": true,
+    "lib": ["es2022"]
+  }
+}

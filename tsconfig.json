@@ -1,15 +1,11 @@
 {
-  "include": ["*.js"],
-  "exclude": ["*.d.ts"],
+  "exclude": ["lib"],
+  "references": [{ "path": "./tsconfig.build.json" }],
   "compilerOptions": {
     "checkJs": true,
-    "declaration": true,
-    "declarationMap": true,
-    "emitDeclarationOnly": true,
-    "module": "node16",
-    "noImplicitAny": true,
+    "noEmit": true,
+    "module": "nodenext",
     "strict": true,
-    "target": "es2022",
     "lib": ["es2022"]
   }
 }
