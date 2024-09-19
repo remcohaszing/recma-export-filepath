@@ -5,8 +5,8 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 
-import { Parser } from 'acorn'
 import { generate } from 'astring'
+import { fromJs } from 'esast-util-from-js'
 import recmaExportFilepath from 'recma-export-filepath'
 import { unified } from 'unified'
 
@@ -14,12 +14,7 @@ import { unified } from 'unified'
  * @type {Plugin}
  */
 function recmaParse() {
-  this.parser = (doc) => {
-    const program = Parser.parse(doc, { ecmaVersion: 'latest', sourceType: 'module' })
-    // @ts-expect-error unified requires the root to be a plain object.
-    program.__proto__ = Object.prototype
-    return program
-  }
+  this.parser = (doc) => fromJs(doc)
 }
 
 /**
