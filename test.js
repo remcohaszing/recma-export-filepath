@@ -1,3 +1,7 @@
+/**
+ * @import { Plugin } from 'unified'
+ */
+
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 
@@ -7,7 +11,7 @@ import recmaExportFilepath from 'recma-export-filepath'
 import { unified } from 'unified'
 
 /**
- * @type {import('unified').Plugin}
+ * @type {Plugin}
  */
 function recmaParse() {
   this.parser = (doc) => {
@@ -19,7 +23,7 @@ function recmaParse() {
 }
 
 /**
- * @type {import('unified').Plugin}
+ * @type {Plugin}
  */
 function recmaStringify() {
   this.compiler = (ast) => generate(ast)
