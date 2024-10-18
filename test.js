@@ -1,30 +1,8 @@
-/**
- * @import { Plugin } from 'unified'
- */
-
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 
-import { generate } from 'astring'
-import { fromJs } from 'esast-util-from-js'
+import { recma } from 'recma'
 import recmaExportFilepath from 'recma-export-filepath'
-import { unified } from 'unified'
-
-/**
- * @type {Plugin}
- */
-function recmaParse() {
-  this.parser = (doc) => fromJs(doc)
-}
-
-/**
- * @type {Plugin}
- */
-function recmaStringify() {
-  this.compiler = (ast) => generate(ast)
-}
-
-const recma = unified().use(recmaParse).use(recmaStringify).freeze()
 
 test('no options', () => {
   const result = recma().use(recmaExportFilepath).processSync({
