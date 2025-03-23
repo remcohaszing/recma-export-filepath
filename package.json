@@ -1,6 +1,6 @@
 {
   "name": "recma-export-filepath",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A recma plugin to expose the filepath as a named export",
   "keywords": [
     "estree",
