@@ -94,7 +94,3 @@ test('missing path', () => {
   assert.equal(result.messages[0].source, 'recma-export-filepath')
   assert.equal(result.messages[0].url, 'https://github.com/remcohaszing/recma-export-filepath')
 })
-
-test('throw on invalid name', () => {
-  assert.throws(() => recma().use(recmaExportFilepath, { name: 'invalid name' }).freeze())
-})

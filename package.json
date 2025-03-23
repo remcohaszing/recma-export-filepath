@@ -31,7 +31,8 @@
     "@types/estree": "^1.0.0",
     "estree-util-is-identifier-name": "^3.0.0",
     "normalize-path": "^3.0.0",
-    "unified": "^11.0.0"
+    "unified": "^11.0.0",
+    "unist-util-mdx-define": "^1.0.0"
   },
   "devDependencies": {
     "@types/normalize-path": "^3.0.0",

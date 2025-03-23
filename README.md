@@ -68,6 +68,9 @@ The default export is a recma plugin.
 - `cwd` (`string`) The current working directory to use when generating a relative file path.
 - `name` (`string`, default: `'filepath'`) — The name to export the file path as.
 
+In addition it supports `unist-util-mdx-define`
+[options](https://github.com/remcohaszing/unist-util-mdx-define#options).
+
 ## Compatibility
 
 This project is compatible with Node.js 16 or greater.

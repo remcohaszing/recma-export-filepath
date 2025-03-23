@@ -1,11 +1,11 @@
 import { relative, resolve } from 'node:path'
 
 import { type Program } from 'estree'
-import { name as isIdentifierName } from 'estree-util-is-identifier-name'
 import normalizePath from 'normalize-path'
 import { type Plugin } from 'unified'
+import { define } from 'unist-util-mdx-define'
 
-interface RecmaExportFilepathOptions {
+interface RecmaExportFilepathOptions extends define.Options {
   /**
    * If true, use an absolute path. By default a relative path is used.
    *
@@ -29,13 +29,9 @@ interface RecmaExportFilepathOptions {
 /**
  * A recma plugin to expose the filepath as a named export
  */
-const recmaExportFilepath: Plugin<[RecmaExportFilepathOptions?], Program> = (options = {}) => {
-  const { absolute = false, cwd, name = 'filepath' } = options
-  if (!isIdentifierName(name)) {
-    throw new Error(`Name this should be a valid identifier, got: ${JSON.stringify(name)}`)
-  }
-
-  return (ast, file) => {
+const recmaExportFilepath: Plugin<[RecmaExportFilepathOptions?], Program> =
+  ({ absolute = false, cwd, name = 'filepath', ...options } = {}) =>
+  (ast, file) => {
     let value = file.path
 
     if (value) {
@@ -52,22 +48,7 @@ const recmaExportFilepath: Plugin<[RecmaExportFilepathOptions?], Program> = (opt
       value = ''
     }
 
-    ast.body.unshift({
-      type: 'ExportNamedDeclaration',
-      specifiers: [],
-      declaration: {
-        type: 'VariableDeclaration',
-        kind: 'const',
-        declarations: [
-          {
-            type: 'VariableDeclarator',
-            id: { type: 'Identifier', name },
-            init: { type: 'Literal', value }
-          }
-        ]
-      }
-    })
+    define(ast, file, { [name]: { type: 'Literal', value } }, options)
   }
-}
 
 export default recmaExportFilepath
