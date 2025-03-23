@@ -1,5 +1,5 @@
 {
-  "exclude": ["lib"],
+  "exclude": ["coverage", "dist", "src"],
   "references": [{ "path": "./tsconfig.build.json" }],
   "compilerOptions": {
     "checkJs": true,

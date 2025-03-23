@@ -1,6 +1,6 @@
 coverage/
+dist/
 node_modules/
-types/
 *.log
 *.tgz
 *.tsbuildinfo
